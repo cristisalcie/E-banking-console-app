@@ -20,28 +20,9 @@ public class RamDatabase {
         return instance;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-    public User getUserByFullName(final String fullName) {
-        for (User user : users) {
-            if (user.getFullName().equals(fullName)) {
-                return user;
-            }
-        }
-        return null;
-    }
     public User getUserByEmail(final String email) {
         for (User user : users) {
             if (user.getEmail().equals(email)) {
-                return user;
-            }
-        }
-        return null;
-    }
-    public User getUserByPhoneNumber(final String phoneNumber) {
-        for (User user : users) {
-            if (user.getPhoneNumber().equals(phoneNumber)) {
                 return user;
             }
         }

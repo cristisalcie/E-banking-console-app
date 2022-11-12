@@ -55,14 +55,6 @@ public class User {
         return fullName;
     }
 
-    public String getFullAddress() {
-        return fullAddress;
-    }
-
-    public String getOccupation() {
-        return occupation;
-    }
-
     public String getEmail() {
         return email;
     }

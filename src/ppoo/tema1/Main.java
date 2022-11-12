@@ -11,6 +11,25 @@ public class Main {
     private static Menu.Status currentMenuStatus = Menu.Status.INTRO;
     private static User loggedInUser = null;
 
+    public static void handleIntro() throws Exception {
+        String line = keyboardReader.readLine();
+        switch (line.toLowerCase()) {
+            case "1", "login" -> currentMenuStatus = Menu.Status.LOGIN;
+            case "2", "register" -> currentMenuStatus = Menu.Status.REGISTER;
+            case "3", "exit" -> currentMenuStatus = Menu.Status.EXIT;
+        }
+    }
+    public static void handleLoggedIn() throws Exception {
+        String line = keyboardReader.readLine();
+        switch (line.toLowerCase()) {
+            case "1", "add new card" -> currentMenuStatus = Menu.Status.ADD_CARD;
+            case "2", "delete card" -> currentMenuStatus = Menu.Status.DELETE_SELECTED_CARD;
+            case "3", "select card" -> currentMenuStatus = Menu.Status.SELECT_CARD;
+            case "4", "show current card details" -> currentMenuStatus = Menu.Status.SHOW_CURRENT_SELECTED_CARD_DETAILS;
+            case "5", "show current card iban" -> currentMenuStatus = Menu.Status.SHOW_CURRENT_SELECTED_CARD_IBAN;
+            case "6", "logout" -> currentMenuStatus = Menu.Status.INTRO;
+        }
+    }
     public static void handleLogin() throws Exception {
         System.out.println("Introduce email: ");
         String email = keyboardReader.readLine();
@@ -203,23 +222,10 @@ public class Main {
                 Menu.print(currentMenuStatus);
 
                 if (currentMenuStatus == Menu.Status.INTRO) {
-                    String line = keyboardReader.readLine();
-                    switch (line.toLowerCase()) {
-                        case "1", "login" -> currentMenuStatus = Menu.Status.LOGIN;
-                        case "2", "register" -> currentMenuStatus = Menu.Status.REGISTER;
-                        case "3", "exit" -> currentMenuStatus = Menu.Status.EXIT;
-                    }
+                    handleIntro();
                 }
                 else if (currentMenuStatus == Menu.Status.LOGGED_IN) {
-                    String line = keyboardReader.readLine();
-                    switch (line.toLowerCase()) {
-                        case "1", "add new card" -> currentMenuStatus = Menu.Status.ADD_CARD;
-                        case "2", "delete card" -> currentMenuStatus = Menu.Status.DELETE_SELECTED_CARD;
-                        case "3", "select card" -> currentMenuStatus = Menu.Status.SELECT_CARD;
-                        case "4", "show current card details" -> currentMenuStatus = Menu.Status.SHOW_CURRENT_SELECTED_CARD_DETAILS;
-                        case "5", "show current card iban" -> currentMenuStatus = Menu.Status.SHOW_CURRENT_SELECTED_CARD_IBAN;
-                        case "6", "logout" -> currentMenuStatus = Menu.Status.INTRO;
-                    }
+                    handleLoggedIn();
                 }
                 else if (currentMenuStatus == Menu.Status.LOGIN) {
                     handleLogin();

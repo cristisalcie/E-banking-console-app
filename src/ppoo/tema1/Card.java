@@ -25,8 +25,6 @@ public class Card {
     private final int CIVLENGTH = 3;
     private final int PINLENGTH = 4;
 
-
-
     public Card(final String holderName, final String incomeSource, final String usagePurpose, final String pin) {
         this.holderName = holderName;
         this.incomeSource = incomeSource;
@@ -76,10 +74,6 @@ public class Card {
         this.expirationDate = null;
     }
 
-    public String getHolderName() {
-        return holderName;
-    }
-
     public String getCiv() {
         StringBuilder stringNumber = new StringBuilder();
 
@@ -88,10 +82,6 @@ public class Card {
         }
 
         return stringNumber.toString();
-    }
-
-    public double getBalance() {
-        return balance;
     }
 
     public String getIban() {
@@ -106,10 +96,6 @@ public class Card {
         }
 
         return stringNumber.toString();
-    }
-
-    public String getExpirationDate() {
-        return expirationDate;
     }
 
     public String getNumber() {
@@ -147,7 +133,6 @@ public class Card {
             pin[i] = string_pin.charAt(i) - '0';
         }
     }
-
 
     public String save() {
         return incomeSource
